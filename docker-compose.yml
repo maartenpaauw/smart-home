@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+  database:
+    image: mysql:5.7
+    container_name: smart-home-database
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ${DATABASE_PATH}:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_MYSQL_DATABASE}
+      MYSQL_USER: ${DATABASE_MYSQL_USER}
+      MYSQL_PASSWORD: ${DATABASE_MYSQL_PASSWORD}
+
+  esphome:
+    image: esphome/esphome
+    container_name: smart-home-esphome
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ${ESPHOME_CONFIG}:/config
