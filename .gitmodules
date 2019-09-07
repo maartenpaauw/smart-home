@@ -1,4 +1,16 @@
 [submodule "esphome"]
   path = esphome
-  url = git@github.com:maartenpaauw/esphome-config.git
+  url = https://github.com/maartenpaauw/esphome-config.git
   branch = master
+[submodule "magic-mirror/modules/MMM-CountDown"]
+  path = magic-mirror/modules/MMM-CountDown
+  url = https://github.com/boazarad/MMM-CountDown.git
+[submodule "magic-mirror/modules/MMM-Cursor"]
+  path = magic-mirror/modules/MMM-Cursor
+  url = https://github.com/MarinescuEvghenii/MMM-Cursor.git
+[submodule "magic-mirror/modules/MMM-rain-forecast"]
+  path = magic-mirror/modules/MMM-rain-forecast
+  url = https://github.com/SpoturDeal/MMM-rain-forecast.git
+[submodule "magic-mirror/modules/MMM-zoom"]
+	path = magic-mirror/modules/MMM-zoom
+	url = https://github.com/maartenpaauw/MMM-zoom.git

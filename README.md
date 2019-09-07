@@ -8,3 +8,4 @@
 
 - MySQL
 - ESPHome
+- MagicMirror²

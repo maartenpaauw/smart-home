@@ -22,3 +22,14 @@ services:
     network_mode: host
     volumes:
       - ./esphome:/config
+
+  magic-mirror:
+    image: bastilimbach/docker-magicmirror:latest
+    container_name: smart-home-magic-mirror
+    restart: unless-stopped
+    ports:
+      - 1024:8080
+    volumes:
+      - ./magic-mirror/config:/opt/magic_mirror/config
+      - ./magic-mirror/modules:/opt/magic_mirror/modules
+      - ./magic-mirror/css/custom.css:/opt/magic_mirror/css/custom.css

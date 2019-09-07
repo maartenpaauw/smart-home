@@ -1,0 +1,96 @@
+/* Magic Mirror Config Sample
+ *
+ * By Michael Teeuw http://michaelteeuw.nl
+ * MIT Licensed.
+ *
+ * For more information how you can configurate this file
+ * See https://github.com/MichMich/MagicMirror#configuration
+ *
+ */
+
+var config = {
+  address: "",
+  port: 8080,
+  ipWhitelist: [],
+  language: "nl",
+  timeFormat: 24,
+  units: "metric",
+  modules: [
+    { module: "alert" },
+    { module: 'MMM-Cursor' },
+    {
+      module: "MMM-zoom",
+      config: {
+        zoom: 0.75,
+      },
+    },
+    {
+      module: "clock",
+      position: "top_left",
+    },
+    {
+        module: "MMM-CountDown",
+        position: "top_left",
+        config: {
+            event: "EVENT_HERE",
+            date: "DATE_HERE",
+        },
+    },
+    {
+      module: "updatenotification",
+      position: "top_bar",
+    },
+    {
+      module: "compliments",
+      position: "lower_third",
+    },
+    {
+      module: "currentweather",
+      position: "top_right",
+      config: {
+        location: "LOCATION_HERE",
+        locationID: "LOCATION_ID_HERE",
+        appid: "APP_ID_HERE",
+      },
+    },
+    {
+      module: "weatherforecast",
+      position: "top_right",
+      header: "Weervoorspelling",
+      config: {
+        location: "LOCATION_HERE",
+        locationID: "LOCATION_ID_HERE",
+        appid: "APP_ID_HERE",
+      },
+    },
+    {
+      module: "MMM-rain-forecast",
+      position: "top_right",
+      header: "Regenverwachting",
+      config: {
+        lat: "LAT_HERE",
+        lon: "LON_HERE",
+        pleaseWait: "Gegevens worden opgehaald...",
+        noRainText: "Geen regen tot %s uur",
+        fillColour: "#FFFFFF",
+      },
+    },
+    {
+      module: "newsfeed",
+      position: "bottom_bar",
+      config: {
+        feeds: [
+          {
+            title: "NOS",
+            url: "http://feeds.nos.nl/nosnieuwsalgemeen",
+          },
+        ],
+        showSourceTitle: true,
+        showPublishDate: true,
+      },
+    },
+  ],
+};
+
+/*************** DO NOT EDIT THE LINE BELOW ***************/
+if (typeof module !== "undefined") {module.exports = config;}

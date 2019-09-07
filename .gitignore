@@ -1,2 +1,5 @@
 # Ignore the data folder.
 data/*
+
+# Magic Mirror
+magic-mirror/config/config.js
