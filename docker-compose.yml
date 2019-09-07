@@ -6,7 +6,8 @@ services:
     image: mysql:5.7
     container_name: smart-home-database
     restart: unless-stopped
-    network_mode: host
+    ports:
+      - 3306:3306
     volumes:
       - ./data/database:/var/lib/mysql
     environment:
@@ -23,9 +24,9 @@ services:
     volumes:
       - ./esphome:/config
 
-  magic-mirror:
+  magicmirror:
     image: bastilimbach/docker-magicmirror:latest
-    container_name: smart-home-magic-mirror
+    container_name: smart-home-magicmirror
     restart: unless-stopped
     ports:
       - 1024:8080
@@ -33,3 +34,21 @@ services:
       - ./magic-mirror/config:/opt/magic_mirror/config
       - ./magic-mirror/modules:/opt/magic_mirror/modules
       - ./magic-mirror/css/custom.css:/opt/magic_mirror/css/custom.css
+
+  pihole:
+    image: pihole/pihole:4.3.1-4
+    container_name: smart-home-pihole
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - './data/pihole/etc/pihole:/etc/pihole'
+      - './data/pihole/etc/dnsmasq.d:/etc/dnsmasq.d'
+    environment:
+      TZ: ${GLOBAL_TZ}
+      WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
+      WEB_PORT: ${PIHOLE_WEB_PORT}
+      ServerIP: ${PIHOLE_SERVER_IP}
+      DNSMASQ_LISTENING: ${PIHOLE_DNSMASQ_LISTENING}
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1

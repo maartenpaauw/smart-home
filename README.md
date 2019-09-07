@@ -9,3 +9,4 @@
 - MySQL
 - ESPHome
 - MagicMirror²
+- Pihole
