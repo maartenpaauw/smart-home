@@ -1,0 +1,4 @@
+[submodule "esphome"]
+  path = esphome
+  url = git@github.com:maartenpaauw/esphome-config.git
+  branch = master

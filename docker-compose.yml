@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - ${DATABASE_PATH}:/var/lib/mysql
+      - ./data/database:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${DATABASE_MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DATABASE_MYSQL_DATABASE}
@@ -21,4 +21,4 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - ${ESPHOME_CONFIG}:/config
+      - ./esphome:/config
