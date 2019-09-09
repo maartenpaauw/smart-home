@@ -18,3 +18,7 @@
   path = magic-mirror/modules/MMM-zoom
   url = https://github.com/maartenpaauw/MMM-zoom.git
   branch = master
+[submodule "homeassistant"]
+  path = homeassistant
+  url = https://github.com/maartenpaauw/home-assistant-config.git
+  branch = master

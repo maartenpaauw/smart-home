@@ -24,6 +24,18 @@ services:
     volumes:
       - ./esphome:/config
 
+  homeassistant:
+    image: homeassistant/home-assistant:stable
+    container_name: smart-home-homeassistant
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      TZ: ${GLOBAL_TZ}
+    volumes:
+      - ./homeassistant/config:/config
+    depends_on:
+      - database
+
   magicmirror:
     image: bastilimbach/docker-magicmirror:latest
     container_name: smart-home-magicmirror

@@ -6,7 +6,8 @@
 
 ## Containers
 
-- MySQL
 - ESPHome
+- Home Assistant
 - MagicMirror²
+- MySQL
 - Pihole
