@@ -10,6 +10,7 @@ services:
       - 3306:3306
     volumes:
       - ./data/database:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
     environment:
       MYSQL_ROOT_PASSWORD: ${DATABASE_MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DATABASE_MYSQL_DATABASE}
@@ -23,16 +24,16 @@ services:
     network_mode: host
     volumes:
       - ./esphome:/config
+      - /etc/localtime:/etc/localtime:ro
 
   homeassistant:
-    image: homeassistant/home-assistant:stable
+    image: homeassistant/home-assistant:0.99.2
     container_name: smart-home-homeassistant
     restart: unless-stopped
     network_mode: host
-    environment:
-      TZ: ${GLOBAL_TZ}
     volumes:
       - ./homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
     depends_on:
       - database
 
@@ -46,6 +47,7 @@ services:
       - ./magic-mirror/config:/opt/magic_mirror/config
       - ./magic-mirror/modules:/opt/magic_mirror/modules
       - ./magic-mirror/css/custom.css:/opt/magic_mirror/css/custom.css
+      - /etc/localtime:/etc/localtime:ro
 
   pihole:
     image: pihole/pihole:4.3.1-4
@@ -53,10 +55,10 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - './data/pihole/etc/pihole:/etc/pihole'
-      - './data/pihole/etc/dnsmasq.d:/etc/dnsmasq.d'
+      - ./data/pihole/etc/pihole:/etc/pihole
+      - ./data/pihole/etc/dnsmasq.d:/etc/dnsmasq.d
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      TZ: ${GLOBAL_TZ}
       WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
       WEB_PORT: ${PIHOLE_WEB_PORT}
       ServerIP: ${PIHOLE_SERVER_IP}
