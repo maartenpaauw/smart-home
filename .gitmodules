@@ -22,3 +22,6 @@
   path = homeassistant
   url = git@github.com:maartenpaauw/home-assistant-config.git
   branch = master
+[submodule "magic-mirror/modules/MMM-HLTV"]
+  path = magic-mirror/modules/MMM-HLTV
+  url = git@github.com:maartenpaauw/MMM-HLTV.git

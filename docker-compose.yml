@@ -27,7 +27,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
   homeassistant:
-    image: homeassistant/home-assistant:0.99.2
+    image: homeassistant/home-assistant:stable
     container_name: smart-home-homeassistant
     restart: unless-stopped
     network_mode: host
@@ -50,7 +50,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
   pihole:
-    image: pihole/pihole:4.3.1-4
+    image: pihole/pihole:latest
     container_name: smart-home-pihole
     restart: unless-stopped
     network_mode: host
