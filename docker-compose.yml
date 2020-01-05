@@ -18,7 +18,7 @@ services:
       MYSQL_PASSWORD: ${DATABASE_MYSQL_PASSWORD}
 
   esphome:
-    image: esphome/esphome:1.13.6
+    image: esphome/esphome:latest
     container_name: smart-home-esphome
     restart: unless-stopped
     network_mode: host
