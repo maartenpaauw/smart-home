@@ -66,3 +66,27 @@ services:
     dns:
       - 127.0.0.1
       - 1.1.1.1
+
+  transmission:
+    image: haugene/transmission-openvpn:2.7
+    container_name: smart-home-transmission
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 9091:9091
+    volumes:
+      - /volume1/Transmission/:/data
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      OPENVPN_PROVIDER: ${TRANSMISSION_OPENVPN_PROVIDER}
+      OPENVPN_CONFIG: ${TRANSMISSION_OPENVPN_CONFIG}
+      OPENVPN_USERNAME: ${TRANSMISSION_OPENVPN_USERNAME}
+      OPENVPN_PASSWORD: ${TRANSMISSION_OPENVPN_PASSWORD}
+      LOCAL_NETWORK: ${TRANSMISSION_LOCAL_NETWORK}
+      WEBPROXY_ENABLED: ${TRANSMISSION_WEBPROXY_ENABLED}
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    devices:
+      - /dev/net/tun
